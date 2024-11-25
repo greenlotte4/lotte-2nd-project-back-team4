@@ -1,14 +1,14 @@
 package com.team4.lion.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -18,17 +18,37 @@ import java.time.LocalDateTime;
 public class User {
 
     @Id
-    private Long user_id;
-    private String pass;
+    @Column(name = "user_id", nullable = false)
+    private String userId;
+
     private String username;
+
     private String email;
 
-    private Long plan_id;
+    @Column(name = "password_hash")
+    private String passwordHash;
+
+    @ManyToOne
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
+
+    @Builder.Default
+    private String role = "USER";
+
+    private String hp;
+
     private String addr1;
+
     private String addr2;
+
     private String zipcode;
+
     private String status;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+
+    @Column(name = "created_at")
+    private Timestamp createdAt;
+
+    @Column(name = "updated_at")
+    private Timestamp updatedAt;
 
 }
