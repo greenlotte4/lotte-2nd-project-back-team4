@@ -1,5 +1,6 @@
 package com.team4.lion.dto;
 
+import com.team4.lion.entity.Plan;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -11,12 +12,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class UserDTO {
-    private Long user_id;
+    private String userId;
     private String pass;
     private String username;
     private String email;
-
-    private Long plan_id;
+    private Plan plan_id;
+    private String role;
+    private String hp;
     private String addr1;
     private String addr2;
     private String zipcode;

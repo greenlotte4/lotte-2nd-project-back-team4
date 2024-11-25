@@ -3,9 +3,7 @@ package com.team4.lion.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 
 @Getter
@@ -14,25 +12,16 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "plan")
-public class Plan {
+@Table(name = "board")
+public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "plan_id")
-    private Long planId;
+    @Column(name = "board_id")
+    private Integer boardId;
 
-    private String name;
-
-    private BigDecimal price;
-
-    @Column(name = "drive_capacity")
-    private Integer driveCapacity;
-
-    @Column(name = "max_file_size")
-    private Integer maxFileSize;
-
-    @Column(name = "max_project")
-    private Integer maxProject;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "max_collaborators")
     private Integer maxCollaborators;

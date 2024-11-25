@@ -1,12 +1,10 @@
 package com.team4.lion.entity;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-
 
 @Getter
 @Setter
@@ -14,28 +12,25 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "plan")
-public class Plan {
+@Table(name = "dirve")
+public class Drive {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "plan_id")
-    private Long planId;
+    @Column(name = "drive_id")
+    private Integer driveId;
 
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private BigDecimal price;
+    @Column(name = "max_collaborators")
+    private Integer maxCollaborators;
 
     @Column(name = "drive_capacity")
     private Integer driveCapacity;
 
     @Column(name = "max_file_size")
     private Integer maxFileSize;
-
-    @Column(name = "max_project")
-    private Integer maxProject;
-
-    @Column(name = "max_collaborators")
-    private Integer maxCollaborators;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
